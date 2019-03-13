@@ -72,7 +72,7 @@ namespace Google.Protobuf
         /// <returns>A codec for the given tag.</returns>
         public static FieldCodec<bool> ForBool(uint tag)
         {
-            return new FieldCodec<bool>(input => input.ReadBool(), (output, value) => output.WriteBool(value), (output, values, count) => output.WriteBoolArray(values, count), 1, tag);
+            return new FieldCodec<bool>(input => input.ReadBool(), (output, value) => output.WriteBool(value), (output, values, count) => output.WriteBoolArray(values, count), CodedOutputStream.BoolSize, tag);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Google.Protobuf
         /// <returns>A codec for the given tag.</returns>
         public static FieldCodec<float> ForFloat(uint tag)
         {
-            return new FieldCodec<float>(input => input.ReadFloat(), (output, value) => output.WriteFloat(value), (output, values, count) => output.WriteFloatArray(values, count), 4, tag);
+            return new FieldCodec<float>(input => input.ReadFloat(), (output, value) => output.WriteFloat(value), (output, values, count) => output.WriteFloatArray(values, count), CodedOutputStream.FloatSize, tag);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Google.Protobuf
         /// <returns>A codec for the given tag.</returns>
         public static FieldCodec<double> ForDouble(uint tag)
         {
-            return new FieldCodec<double>(input => input.ReadDouble(), (output, value) => output.WriteDouble(value), (output, values, count) => output.WriteDoubleArray(values, count), 8, tag);
+            return new FieldCodec<double>(input => input.ReadDouble(), (output, value) => output.WriteDouble(value), (output, values, count) => output.WriteDoubleArray(values, count), CodedOutputStream.DoubleSize, tag);
         }
 
         // Enums are tricky. We can probably use expression trees to build these delegates automatically,
